@@ -3,7 +3,7 @@
 **_Setup_**
 1. Go to the following Directory:
 	
-	```/Boxed/Client/Boxed.Client```
+	```/Boxed/Client/Boxed-Client```
 	
 2. Run the following command once at the directory
 
@@ -19,7 +19,7 @@
 	
     This should start the client side/UI at the specified $PORT in /team19/client/src/config.js and config.env
 
-4. Navigate to `https://localhost:5010` to display the application. 
+4. Navigate to `https://localhost:5173` to display the application. 
 
 
 **_Usage_**
