@@ -1,0 +1,49 @@
+.textDiv {
+  padding-left: 4rem;
+  padding-right: 4rem;
+  max-width: 100%;
+  position: relative;
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 700;
+    color: #ffffff;
+  }
+}
+
+.motionDiv {
+  width: 100%;
+  text-align: center;
+}
+
+.parentDiv {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  opacity: 0.6;
+  align-content: center;
+}
+
+.hero {
+  position: relative;
+  height: 95vh;
+  width: 100vw;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+    height: 95vh;
+    width: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .textDiv {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}

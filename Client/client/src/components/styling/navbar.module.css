@@ -1,0 +1,88 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.navbarContainer {
+  display: flex;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  justify-content: space-between;
+  width: 100%;
+  color: #ffffff;
+  background: #27272a;
+  justify-content: "space-between";
+}
+
+.navbarLogo {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbarLogoChild {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.aStandard {
+  cursor: pointer;
+}
+.aStandard:hover {
+  color: rgba(215, 199, 199, 0.479);
+}
+
+.standardText {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.redText {
+  font-weight: 300;
+  color: red;
+}
+
+.redText:hover {
+  color: rgba(215, 199, 199, 0.479);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.standardButton {
+  border-color: #ffffff;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.standardButton:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.redButton {
+  border-color: #ff0000;
+  color: #000000;
+  background-color: #ff0000;
+}
+
+.redButton:hover {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .navbarLogo {
+    gap: 1.5rem;
+  }
+}
