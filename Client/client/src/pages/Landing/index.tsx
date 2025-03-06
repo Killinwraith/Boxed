@@ -1,7 +1,7 @@
 import Layout from "./Layout";
-import HeroSection from "./Landing/HeroSection";
+import HeroSection from "./HeroSection";
 
-const Landing = () => {
+const Index = () => {
   return (
     <Layout>
       <HeroSection />
@@ -9,4 +9,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default Index;
