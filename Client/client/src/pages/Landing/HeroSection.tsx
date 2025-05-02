@@ -2,10 +2,14 @@
 
 import styles from "./styles/HeroSection.module.css";
 import { motion } from "framer-motion";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
+// import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import StandardRedButon from "../../components/Buttons/StandardRedButton";
 
 const HeroSection = () => {
+  const [queryVal, setQueryVal] = useState("");
+
   return (
     <div className={styles.hero}>
       <img src="/LandingBckGrnd.jpeg" alt="boxed logo" />
@@ -23,16 +27,26 @@ const HeroSection = () => {
               confidentiatlity and security.
             </p>
             <div className="flex justify-center">
-              <Input
+              {/* <Input
                 type="text"
-                value="Search Query"
-                onChange={() => {}}
+                value={queryVal}
+                onChange={(e) => {
+                  setQueryVal(e.target.value);
+                }}
                 placeholder="Search By City"
                 className="w-full max-w-lg rounded-none rounded-l-xl border-none bg-white h-12"
               />
-              <Button onClick={() => {}} className={styles.redButton}>
+              <Button
+                onClick={() => {
+                  console.log(queryVal);
+                }}
+                className={styles.redButton}
+              > 
                 Search
-              </Button>
+              </Button> */}
+              <StandardRedButon redDirectLink="/signIn">
+                Get Started
+              </StandardRedButon>
             </div>
           </div>
         </motion.div>

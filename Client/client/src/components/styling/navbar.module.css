@@ -67,6 +67,7 @@
 .standardButton:hover {
   color: #000000;
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .redButton {
@@ -79,6 +80,7 @@
   color: #000000;
   background-color: #ffffff;
   border-color: #ffffff;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

@@ -1,4 +1,4 @@
-import Layout from "../Landing/Layout";
+import Layout from "./Layout";
 
 const Dashboard = () => {
   return (

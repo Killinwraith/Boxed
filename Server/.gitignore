@@ -1,7 +1,3 @@
-#dependancies
-/Client/client/node_modules
-/Server/node_modlues
-
 # Logs
 logs
 *.log
