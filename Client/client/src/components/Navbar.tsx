@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import styles from "./styling/navbar.module.css";
+import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = () => {
   const NAVBAR_HEIGHT = 50;
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.navbar} style={{ height: `${NAVBAR_HEIGHT}px` }}>
@@ -25,16 +27,16 @@ const Navbar = () => {
             </a>
           </div>
           <div className={styles.buttonGroup}>
-            <a href="/signIn">
+            <Link to="/Login/signIn" className={styles.aStandard}>
               <Button variant={"outline"} className={styles.standardButton}>
                 Sign In
               </Button>
-            </a>
-            <a href="/signUp">
-              <Button variant={"secondary"} className={styles.redButton}>
+            </Link>
+            <Link to="/Login/signUp" className={styles.aStandard}>
+              <Button variant={"outline"} className={styles.redButton}>
                 Sign Up
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

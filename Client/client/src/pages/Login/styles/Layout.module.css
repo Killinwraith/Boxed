@@ -9,3 +9,13 @@
   width: 100%;
   height: 100%;
 }
+
+
+.cardContainer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    width: 100vw;    
+}

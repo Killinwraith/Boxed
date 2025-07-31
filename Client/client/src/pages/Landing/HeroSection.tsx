@@ -27,24 +27,7 @@ const HeroSection = () => {
               confidentiatlity and security.
             </p>
             <div className="flex justify-center">
-              {/* <Input
-                type="text"
-                value={queryVal}
-                onChange={(e) => {
-                  setQueryVal(e.target.value);
-                }}
-                placeholder="Search By City"
-                className="w-full max-w-lg rounded-none rounded-l-xl border-none bg-white h-12"
-              />
-              <Button
-                onClick={() => {
-                  console.log(queryVal);
-                }}
-                className={styles.redButton}
-              > 
-                Search
-              </Button> */}
-              <StandardRedButon redDirectLink="/signIn">
+              <StandardRedButon redDirectLink="Login/signIn">
                 Get Started
               </StandardRedButon>
             </div>
