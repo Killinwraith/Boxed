@@ -1,10 +1,17 @@
 import { Button } from "@/components/ui/button";
 import styles from "./styling/navbar.module.css";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "@/../AuthContext/authContext";
 
 const Navbar = () => {
+  const auth = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    auth.signOut();
+  };
+
   const NAVBAR_HEIGHT = 50;
-  const navigate = useNavigate();
   return (
     <>
       <div className={styles.navbar} style={{ height: `${NAVBAR_HEIGHT}px` }}>
@@ -27,16 +34,30 @@ const Navbar = () => {
             </a>
           </div>
           <div className={styles.buttonGroup}>
-            <Link to="/Login/signIn" className={styles.aStandard}>
-              <Button variant={"outline"} className={styles.standardButton}>
-                Sign In
-              </Button>
-            </Link>
-            <Link to="/Login/signUp" className={styles.aStandard}>
-              <Button variant={"outline"} className={styles.redButton}>
-                Sign Up
-              </Button>
-            </Link>
+            {auth.isSignedIn ? (
+              <Link to="/" className={styles.aStandard}>
+                <Button
+                  variant={"outline"}
+                  className={styles.redButton}
+                  onClick={handleLogOut}
+                >
+                  Sign Out
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link to="/Login/signIn" className={styles.aStandard}>
+                  <Button variant={"outline"} className={styles.standardButton}>
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/Login/signUp" className={styles.aStandard}>
+                  <Button variant={"outline"} className={styles.redButton}>
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

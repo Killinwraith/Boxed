@@ -11,7 +11,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import styles from "./styles/Layout.module.css";
-const NAVBAR_HEIGHT = 50;
 
 const UserCard = ({
   title,
@@ -21,7 +20,7 @@ const UserCard = ({
   description: string;
 }) => {
   return (
-    <div className={styles.cardContainer} >
+    <div className={styles.cardContainer}>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
@@ -67,7 +66,6 @@ const UserCard = ({
         </CardFooter>
       </Card>
     </div>
-
   );
 };
 export default UserCard;

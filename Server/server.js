@@ -28,13 +28,19 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Add your custom API routes here
 
-// // Error handling middleware
-// app.use((err, req, res, next) => {
-//   console.error(err.stack);
-//   res.status(500).json({ error: 'Something went wrong!' });
-// });
+app.get('/api/testPrint', (req,res) => {
+
+    const {message,messageTwo} = req.query
+    res.json({
+        message: message,
+        messageTwo: messageTwo,
+        status: 'success',
+        timestamp: new Date().toISOString()
+    });
+
+});
+
 
 // // 404 handler
 // app.use('*', (req, res) => {

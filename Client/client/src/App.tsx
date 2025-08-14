@@ -1,28 +1,36 @@
 // import { useState } from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Layout from "@/pages/Layout";
+import Navbar from "@/components/Navbar";
 import Landing from "@/pages/Landing";
 import Dashboard from "@/pages/Dashboard";
 import LogIn from "@/pages/Login";
-import TEST from "@/pages/TEST/TEST"
+import { AuthContext } from "./../AuthContext/authContext";
 
 function App() {
+  const { isSignedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  console.log("isSignedIn:", isSignedIn);
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate("/dashboard");
+    } else {
+      navigate("/");
+    }
+  }, [isSignedIn]);
+
   return (
     <>
-      {/* <div>
-        Hello World
-        <button onClick={() => setCount(count + 1)}>Count: {count}</button>
-      </div> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Login/:loginAction" element={<LogIn />} />
-        <Route path="/TEST" element={<TEST />} />
       </Routes>
-
-      {/* <Landing /> */}
     </>
   );
 }

@@ -1,15 +1,8 @@
-"use client";
-
 import styles from "./styles/HeroSection.module.css";
 import { motion } from "framer-motion";
-// import { Input } from "@/components/ui/input";
-// import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import StandardRedButon from "../../components/Buttons/StandardRedButton";
 
 const HeroSection = () => {
-  const [queryVal, setQueryVal] = useState("");
-
   return (
     <div className={styles.hero}>
       <img src="/LandingBckGrnd.jpeg" alt="boxed logo" />
