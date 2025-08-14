@@ -1,8 +1,11 @@
 import styles from "./styles/HeroSection.module.css";
 import { motion } from "framer-motion";
+import { useAuth0 } from "@auth0/auth0-react";
 import StandardRedButon from "../../components/Buttons/StandardRedButton";
 
 const HeroSection = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <div className={styles.hero}>
       <img src="/LandingBckGrnd.jpeg" alt="boxed logo" />
@@ -16,11 +19,11 @@ const HeroSection = () => {
           <div className={styles.textDiv}>
             <h1>Let's Get Started With Your First File Upload</h1>
             <p className="text-xl text-white mb-8">
-              All items uploaded are secured and encrypted to ensure omplete
-              confidentiatlity and security.
+              All items uploaded are secured and encrypted to ensure complete
+              confidentiality and security.
             </p>
             <div className="flex justify-center">
-              <StandardRedButon redDirectLink="Login/signIn">
+              <StandardRedButon onClick={() => loginWithRedirect()}>
                 Get Started
               </StandardRedButon>
             </div>

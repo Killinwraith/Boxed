@@ -1,27 +1,21 @@
-// import { useState } from "react";
-import "./App.css";
-import { useEffect, useContext } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Landing from "@/pages/Landing";
-import Dashboard from "@/pages/Dashboard";
-import LogIn from "@/pages/Login";
-import { AuthContext } from "./../AuthContext/authContext";
+import Dashboard from "./pages/Dashboard";
+import "./App.css";
 
-function App() {
-  const { isSignedIn } = useContext(AuthContext);
+export default function App() {
+  const { isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
 
-  console.log("isSignedIn:", isSignedIn);
-
+  // Auto redirect after login
   useEffect(() => {
-    if (isSignedIn) {
+    if (!isLoading && isAuthenticated) {
       navigate("/dashboard");
-    } else {
-      navigate("/");
     }
-  }, [isSignedIn]);
+  }, [isAuthenticated, isLoading, navigate]);
 
   return (
     <>
@@ -29,10 +23,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/Login/:loginAction" element={<LogIn />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
 }
-
-export default App;
