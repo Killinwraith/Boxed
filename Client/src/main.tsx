@@ -16,6 +16,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         clientId={clientId}
         authorizationParams={{
           redirect_uri: window.location.origin,
+          audience:
+            import.meta.env.VITE_AUTH0_AUDIENCE || "https://myapi.example.com",
         }}
       >
         <App />
