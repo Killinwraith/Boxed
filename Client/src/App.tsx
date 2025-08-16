@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Landing from "@/pages/Landing";
 import Dashboard from "./pages/Dashboard";
+import ErrorBoundary from "./components/ErrorBoundary";
 import "./App.css";
 
 export default function App() {
@@ -18,13 +19,13 @@ export default function App() {
   }, [isAuthenticated, isLoading, navigate]);
 
   return (
-    <>
+    <ErrorBoundary>
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </>
+    </ErrorBoundary>
   );
 }

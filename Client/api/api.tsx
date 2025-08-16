@@ -1,13 +1,13 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const useApi = () => {
-  const API_BASE_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
   const { getAccessTokenSilently } = useAuth0();
 
   const request = async (endpoint: string, options: RequestInit = {}) => {
     const token = await getAccessTokenSilently({
       authorizationParams: {
-        audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
       },
     });
 
@@ -39,7 +39,7 @@ export const useApi = () => {
   const downloadFile = async (fileName: string) => {
     const token = await getAccessTokenSilently({
       authorizationParams: {
-        audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
       },
     });
 
@@ -66,6 +66,28 @@ export const useApi = () => {
     return request(endpoint);
   };
 
+  const getFolderTree = async () => {
+    return request("/api/folders/tree");
+  };
+
+  const getFolder = async (folderId: string) => {
+    return request(`/api/folders/${folderId}`);
+  };
+
+  const updateFolder = async (folderId: string, name: string) => {
+    return request(`/api/folders/${folderId}`, {
+      method: "PUT",
+      body: JSON.stringify({ name }),
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
+  const deleteFolder = async (folderId: string) => {
+    return request(`/api/folders/${folderId}`, {
+      method: "DELETE",
+    });
+  };
+
   const listFiles = async (folderId?: string) => {
     const endpoint = folderId
       ? `/api/files?folderId=${folderId}`
@@ -87,6 +109,10 @@ export const useApi = () => {
     downloadFile,
     deleteFile,
     listFolders,
+    getFolderTree,
+    getFolder,
+    updateFolder,
+    deleteFolder,
     createFolder,
   };
 };

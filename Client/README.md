@@ -1,54 +1,127 @@
-# React + TypeScript + Vite
+# Boxed Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based frontend for the Boxed cloud storage application with MongoDB-powered folder management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI**: Clean, responsive interface built with React and TypeScript
+- **Folder Management**: Create, navigate, and delete folders with hierarchical structure
+- **File Operations**: Upload, download, and manage files
+- **Authentication**: Secure login with Auth0
+- **Real-time Updates**: Automatic refresh of folder and file lists
+- **Breadcrumb Navigation**: Easy navigation through folder hierarchy
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Environment Variables
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Copy the example environment file and configure it:
+
+```bash
+cp env.example .env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Update `.env` with your actual values:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```env
+# API Configuration
+VITE_API_URL=http://localhost:3001
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+# Auth0 Configuration
+VITE_AUTH0_DOMAIN=your-auth0-domain.auth0.com
+VITE_AUTH0_CLIENT_ID=your-auth0-client-id
+VITE_AUTH0_AUDIENCE=your-auth0-audience
 ```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Start Development Server
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+## API Integration
+
+The client communicates with the server through the following endpoints:
+
+### Folder Management
+
+- `GET /api/folders` - List folders
+- `POST /api/folders` - Create folder
+- `GET /api/folders/tree` - Get folder hierarchy
+- `GET /api/folders/:id` - Get specific folder
+- `PUT /api/folders/:id` - Update folder
+- `DELETE /api/folders/:id` - Delete folder
+
+### File Management
+
+- `GET /api/files` - List files
+- `POST /api/upload` - Upload file
+- `GET /api/files/:fileName` - Download file
+- `DELETE /api/files/:fileName` - Delete file
+
+## Component Structure
+
+- **Dashboard**: Main file management interface
+- **API Client**: Centralized API communication
+- **Shared Models**: TypeScript interfaces for data structures
+
+## Features
+
+### Folder Operations
+
+- Create new folders with validation
+- Navigate through folder hierarchy
+- Delete folders (with confirmation)
+- Breadcrumb navigation
+- Empty state handling
+
+### File Operations
+
+- Upload multiple files
+- View file details (name, size)
+- Download files
+- Delete files
+
+### User Experience
+
+- Loading states
+- Error handling
+- Responsive design
+- Keyboard shortcuts (Enter to create folder)
+
+## Development
+
+### Adding New Features
+
+1. Update API client in `api/api.tsx`
+2. Add new components as needed
+3. Update TypeScript models in `Shared/Models/`
+4. Test with the running server
+
+### Styling
+
+- Uses CSS modules for component-specific styling
+- Responsive design with flexbox
+- Consistent color scheme and spacing
+
+## Troubleshooting
+
+### Common Issues
+
+1. **API Connection Failed**: Check `VITE_API_URL` in `.env`
+2. **Authentication Errors**: Verify Auth0 configuration
+3. **CORS Issues**: Ensure server is running and CORS is configured
+
+### Development Tips
+
+- Use browser dev tools to inspect API calls
+- Check console for error messages
+- Verify environment variables are loaded correctly

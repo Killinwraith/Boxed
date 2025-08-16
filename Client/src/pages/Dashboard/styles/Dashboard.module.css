@@ -1,12 +1,71 @@
 .dashboard {
   padding: 20px;
   font-family: sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.breadcrumbItem {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.breadcrumbItem:hover {
+  color: #0056b3;
 }
 
 .toolbar {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.toolbar input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 200px;
+}
+
+.toolbar button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toolbar button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.toolbar button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
 }
 
 .content {
@@ -22,10 +81,52 @@
   gap: 10px;
 }
 
-.folderItem,
+.folderItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 200px;
+  background-color: #f8f9fa;
+}
+
+.folderName {
+  cursor: pointer;
+  flex: 1;
+}
+
+.folderName:hover {
+  color: #007bff;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #dc3545;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.deleteButton:hover {
+  background-color: #f8d7da;
+}
+
 .fileItem {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  cursor: pointer;
+  min-width: 200px;
+  background-color: white;
+}
+
+.emptyState {
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
 }
